@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Hotel Imperial Empire | Luxury Redefined</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0a0a0a;
+      color: #ece8e0;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1b18;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c7a55b;
+      border-radius: 6px;
+    }
+
+    /* typography */
+    h1, h2, h3, .logo, .nav-links a, .btn, .suite-title, .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: #c7a55b;
+    }
+    .section-subhead {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #c7a55b;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    /* layout */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* header / navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(199, 165, 91, 0.3);
+      transition: 0.3s;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ece8e0;
+      letter-spacing: 2px;
+    }
+    .logo span {
+      color: #c7a55b;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ece8e0;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: 0.3s;
+      letter-spacing: 1px;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #c7a55b;
+    }
+    .book-btn {
+      background: transparent;
+      border: 1.5px solid #c7a55b;
+      padding: 0.5rem 1.4rem;
+      border-radius: 40px;
+      transition: 0.3s;
+    }
+    .book-btn:hover {
+      background: #c7a55b;
+      color: #0a0a0a !important;
+    }
+
+    /* hero */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), 
+              url('images/myphoto.jpg') center/cover no-repeat;
+}
+    .hero-content {
+      width: 100%;
+      animation: fadeUp 1.2s ease-out;
+    }
+    .hero-content h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 1rem auto 2rem;
+      font-weight: 300;
+    }
+    .gold-line {
+      width: 100px;
+      height: 2px;
+      background: #c7a55b;
+      margin: 1.5rem auto;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: all 0.3s;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1px;
+    }
+    .btn-primary {
+      background: #c7a55b;
+      color: #0a0a0a;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #b48b3a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .btn-outline {
+      border: 1.5px solid #c7a55b;
+      color: #ece8e0;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #c7a55b;
+      color: #0a0a0a;
+      transform: translateY(-3px);
+    }
+
+    /* about section */
+    .about {
+      padding: 100px 0;
+      background: #0f0e0c;
+    }
+    .about-grid {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text p {
+      margin: 1.5rem 0;
+      color: #d1cdc4;
+      line-height: 1.7;
+    }
+    .about-img {
+      flex: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+    }
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: 0.5s;
+    }
+    .about-img:hover img {
+      transform: scale(1.02);
+    }
+
+    /* suites */
+    .suites {
+      padding: 100px 0;
+      background: #0a0a0a;
+      text-align: center;
+    }
+    .suite-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    .card {
+      background: #141210;
+      border-radius: 18px;
+      overflow: hidden;
+      width: 320px;
+      transition: 0.3s ease;
+      border: 1px solid rgba(199, 165, 91, 0.2);
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      border-color: #c7a55b;
+      box-shadow: 0 20px 30px -10px black;
+    }
+    .card-img {
+      height: 240px;
+      overflow: hidden;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+    .card-content {
+      padding: 1.8rem;
+      text-align: left;
+    }
+    .suite-title {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+    }
+    .price {
+      color: #c7a55b;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .card-content p {
+      font-size: 0.9rem;
+      color: #b9b3a8;
+    }
+
+    /* amenities */
+    .amenities {
+      padding: 100px 0;
+      background: #0f0e0c;
+    }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .amenity-item i {
+      font-size: 2.8rem;
+      color: #c7a55b;
+      margin-bottom: 1rem;
+    }
+    .amenity-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .amenity-item p {
+      font-size: 0.9rem;
+      color: #bcb6ab;
+    }
+
+    /* dining */
+    .dining {
+      padding: 100px 0;
+      background: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover fixed;
+      position: relative;
+      z-index: 1;
+    }
+    .dining::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: -1;
+    }
+    .dining-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .dining-content h2:after {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+    }
+    .dining-content p {
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    /* testimonial */
+    .testimonials {
+      padding: 100px 0;
+      background: #0a0a0a;
+      text-align: center;
+    }
+    .testimonial-slider {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: #141210;
+      padding: 2rem;
+      border-radius: 24px;
+      max-width: 380px;
+      text-align: left;
+      border-left: 4px solid #c7a55b;
+    }
+    .testimonial-card i {
+      color: #c7a55b;
+      font-size: 2rem;
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      margin: 1rem 0;
+    }
+    .guest-name {
+      font-weight: 600;
+      margin-top: 1rem;
+      color: #c7a55b;
+    }
+
+    /* footer */
+    footer {
+      background: #050403;
+      padding: 60px 0 30px;
+      border-top: 1px solid #2a241f;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .footer-col h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .footer-col p, .footer-col li {
+      color: #aca59a;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-col i {
+      width: 28px;
+      color: #c7a55b;
+    }
+    .social-links a {
+      color: #ece8e0;
+      margin-right: 1rem;
+      font-size: 1.4rem;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .social-links a:hover {
+      color: #c7a55b;
+      transform: translateY(-3px);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #2a241f;
+      font-size: 0.8rem;
+      color: #8b847a;
+    }
+    .call-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #c7a55b;
+  color: #0a0a0a;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.call-btn:hover {
+  background: #b48b3a;
+  transform: scale(1.1);
+}
+#topBtn i {
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#topBtn {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  background: #c7a55b;
+  color: #0a0a0a;
+  border: none;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+
+  display: flex;              /* center fix */
+  align-items: center;        /* vertical center */
+  justify-content: center;    /* horizontal center */
+
+  opacity: 0;                 /* hide by default */
+  visibility: hidden;
+
+  z-index: 999;
+  transition: 0.3s;
+}
+/* Calendar icon white */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Optional: hover effect */
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  filter: invert(1) brightness(1.5);
+}
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* responsiveness */
+    @media (max-width: 980px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero-content h1 {
+        font-size: 3.2rem;
+      }
+      h2 {
+        font-size: 2.4rem;
+      }
+      .about-grid {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2.4rem;
+        letter-spacing: 3px;
+      }
+      .btn-group {
+        gap: 1rem;
+      }
+      .btn {
+        padding: 0.7rem 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">IMPERIAL <span>EMPIRE</span></div>
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#suites">Suites</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#dining">Dining</a></li>
+          <li><a href="#contact">Contact</a></li>
+      
+      </div>
+    </div>
+  </header>
+<!-- sirf ek hi rakho -->
+<button id="topBtn" title="Go to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="gold-line"></div>
+        <h1>HOTEL IMPERIAL EMPIRE</h1>
+        <p>Where timeless grandeur meets modern elegance. Experience unrivaled luxury in the heart of the city.</p>
+        <div class="btn-group">
+          <a href="#suites" class="btn btn-primary">Discover Rooms</a>
+          <a href="#booking" class="btn btn-outline">Book Your Stay</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <div class="section-subhead">LEGACY OF EXCELLENCE</div>
+            <h2>An Empire of Refined Hospitality</h2>
+            <p>Since 2020, Hotel Imperial Empire has stood as a beacon of sophistication, welcoming royalty, artists, and discerning travelers. Our historic architecture blends neoclassical details with contemporary luxury, offering a sanctuary of tranquility.</p>
+            <p>Every stay is curated with bespoke service, world-class amenities, and an unwavering commitment to creating unforgettable memories. From the marble lobby to the rooftop infinity pool, Imperial Empire is more than a hotel — it's an experience.</p>
+            <a href="#suites" style="color: #c7a55b; font-weight: 500;">Explore our story →</a>
+          </div>
+          <div class="about-img">
+            <img src="images/myphoto.jpg" alt="My Photo">          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suites Section -->
+    <section id="suites" class="suites">
+      <div class="container">
+        <div class="section-subhead">LUXURY ACCOMMODATIONS</div>
+        <h2>Rooms & Prices</h2>
+        <div class="suite-cards">
+          <div class="card">
+            <div class="card-img"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Presidential Suite"></div>
+            <div class="card-content">
+              <h3 class="suite-title">Premium Room</h3>
+              <div class="price">from 2000 rs / night</div>
+              <p>Spacious room with city view, comfortable bed, modern bathroom, and premium amenities. </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="https://images.pexels.com/photos/1648772/pexels-photo-1648772.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Royal Chamber"></div>
+            <div class="card-content">
+              <h3 class="suite-title">Medium Room</h3>
+              <div class="price">from 1500 rs / night</div>
+              <p>Spacious living area, handcrafted furnishings, rainfall shower, and exclusive lounge access.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Empire Deluxe"></div>
+            <div class="card-content">
+              <h3 class="suite-title">Simple room</h3>
+              <div class="price">from 750 rs / night</div>
+              <p>Basic room with a comfortable bed and essential facilities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Dining Experience -->
+    <section id="dining" class="dining">
+      <div class="dining-content container">
+        <div class="section-subhead">CULINARY ARTISTRY</div>
+        <h2>Gastronomic Journey</h2>
+        <p>Indulge in a symphony of flavors at our signature restaurants —  Indian and chinese  cuisine . The Emperor's Lounge serves afternoon tea </p>
+        <a href="#contact" class="btn btn-outline" style="border-color:#fff; color:#fff;">Reserve a Table</a>
+      </div>
+    </section>
+    
+    <!-- Booking / Contact Section (named as contact + quick booking) -->
+    <section id="contact" style="padding: 80px 0; background: #0f0e0c;">
+      <div class="container">
+        <div class="section-subhead" style="text-align: center;">YOUR STAY AWAITS</div>
+        <h2 style="text-align: center;">Room Booking </h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem;">
+          <div style="flex: 1; min-width: 260px;">
+            <form id="bookingForm" style="display: flex; flex-direction: column; gap: 1rem;">
+              <input type="text" id="name" placeholder="Full Name" required style="padding: 14px; background: #1e1b18; border: 1px solid #3a322b; color: #ece8e0; border-radius: 8px;">
+              <input type="email" id="email" placeholder="Email Address" required style="padding: 14px; background: #1e1b18; border: 1px solid #3a322b; color: #ece8e0; border-radius: 8px;">
+              <input type="date" id="checkin" required style="padding: 14px; background: #1e1b18; border: 1px solid #3a322b; color: #ece8e0; border-radius: 8px;">
+              <input type="date" id="checkout" required style="padding: 14px; background: #1e1b18; border: 1px solid #3a322b; color: #ece8e0; border-radius: 8px;">
+              <select id="suiteSelect" style="padding: 14px; background: #1e1b18; border: 1px solid #3a322b; color: #ece8e0; border-radius: 8px;">
+                <option value="Premium Room">Premium Room</option>
+                <option value="Medium Room">Medium Room</option>
+                <option value="Simple Room">Simple Room</option>
+              </select>
+              <button type="submit" style="background: #c7a55b; border: none; padding: 14px; font-weight: bold; font-size: 1rem; border-radius: 40px; cursor: pointer; transition: 0.2s;">Check Availability</button>
+              <p id="formFeedback" style="font-size: 0.85rem; color:#c7a55b;"></p>
+            </form>
+          </div>
+          <div style="flex: 1; min-width: 260px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Imperial Concierge</h3>
+            <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color:#c7a55b;"></i>C 25, G P Block Rd, near IIMT college, Kaseru Baksar, Ganga Nagar, Meerut, Uttar Pradesh 250001</p>
+            <p><i class="fas fa-phone-alt" style="margin-right: 10px; color:#c7a55b;"></i>+91 94575 49192</p>
+            <p><i class="fas fa-envelope" style="margin-right: 10px; color:#c7a55b;"></i> ImperialEmpire@gmail.com</p>
+            <div class="social-links" style="margin-top: 2rem;">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Floating Call Button -->
+<a href="tel:+919457549192" class="call-btn">
+  <i class="fas fa-phone-alt"></i>
+</a>
+
+  <footer>
+    <div class="container"
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>IMPERIAL <span style="color:#c7a55b;">EMPIRE</span></h3>
+          <p>Timeless grandeur, modern soul.<br>Your sanctuary 2020.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about" style="color:#aca59a; text-decoration:none;">About Us</a></li>
+            <li><a href="#suites" style="color:#aca59a; text-decoration:none;">Luxury Suites</a></li>
+            <li><a href="#amenities" style="color:#aca59a; text-decoration:none;">Spa & Wellness</a></li>
+            <li><a href="#dining" style="color:#aca59a; text-decoration:none;">Gastronomy</a></li>
+          </ul>
+        </div>
+
+          <div style="display: flex; margin-top: 0.6rem;">
+            <input type="email" placeholder="Your email" style="padding: 8px; background:#1e1b18; border: none; flex:1; border-radius: 30px 0 0 30px;">
+            <button style="background:#c7a55b; border: none; padding: 8px 14px; border-radius: 0 30px 30px 0;">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2020 Hotel Imperial Empire — Where legends rest. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+ const form = document.getElementById('bookingForm');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const checkin = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
+  const suite = document.getElementById('suiteSelect').value;
+
+  // Validation
+  if (!name || !email || !checkin || !checkout) {
+    alert("Please fill all details");
+    return;
+  }
+
+  if (new Date(checkin) >= new Date(checkout)) {
+    alert("Check-out date must be after check-in date");
+    return;
+  }
+
+  // WhatsApp message format
+  const message = `*Hotel Imperial Empire Booking Inquiry*%0A%0A
+👤 Name: ${name}%0A
+📧 Email: ${email}%0A
+🏨 Room Type: ${suite}%0A
+📅 Check-in: ${checkin}%0A
+📅 Check-out: ${checkout}%0A%0A
+Please confirm availability.`;
+
+  // Your WhatsApp number (without +)
+  const phoneNumber = "919457549192";
+
+  // Open WhatsApp
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+  window.open(whatsappURL, "_blank");
+
+  // Reset form
+  form.reset();
+});
+    
+
+    // Scroll to top button
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    topBtn.style.opacity = "1";
+    topBtn.style.visibility = "visible";
+  } else {
+    topBtn.style.opacity = "0";
+    topBtn.style.visibility = "hidden";
+  }
+});
+
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section, #home');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+        if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      if(!current && window.scrollY < 100) current = 'home';
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+    topBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+  </script>
+ 
+</body>
+</html>
