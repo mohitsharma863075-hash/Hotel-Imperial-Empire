@@ -141,9 +141,9 @@
       position: relative;
     }
     .hero {
-  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), 
-              url('images/myphoto.jpg') center/cover no-repeat;
-}
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), 
+                  url('images/myphoto.jpg') center/cover no-repeat;
+    }
     .hero-content {
       width: 100%;
       animation: fadeUp 1.2s ease-out;
@@ -444,77 +444,170 @@
       color: #8b847a;
     }
     .call-btn {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: #c7a55b;
-  color: #0a0a0a;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  z-index: 999;
-  transition: 0.3s;
-}
-
-.call-btn:hover {
-  background: #b48b3a;
-  transform: scale(1.1);
-}
-#topBtn i {
-  margin: 0;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#topBtn {
-  position: fixed;
-  right: 20px;
-  bottom: 90px;
-  background: #c7a55b;
-  color: #0a0a0a;
-  border: none;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  font-size: 20px;
-  cursor: pointer;
-
-  display: flex;              /* center fix */
-  align-items: center;        /* vertical center */
-  justify-content: center;    /* horizontal center */
-
-  opacity: 0;                 /* hide by default */
-  visibility: hidden;
-
-  z-index: 999;
-  transition: 0.3s;
-}
-/* Calendar icon white */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  cursor: pointer;
-}
-
-/* Optional: hover effect */
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  filter: invert(1) brightness(1.5);
-}
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #c7a55b;
+      color: #0a0a0a;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: 0.3s;
+    }
+    .call-btn:hover {
+      background: #b48b3a;
+      transform: scale(1.1);
+    }
+    #topBtn i {
+      margin: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #topBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 90px;
+      background: #c7a55b;
+      color: #0a0a0a;
+      border: none;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 999;
+      transition: 0.3s;
+    }
+    /* Calendar icon white */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+      filter: invert(1) brightness(1.5);
+    }
     .social-links a:hover {
-  color: #E1306C; /* Instagram pink color */
-}
+      color: #E1306C;
+    }
 
+    /* ----- MODAL (BOOK NOW POPUP) ----- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-content {
+      background: #0f0e0c;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 28px;
+      border: 1px solid rgba(199, 165, 91, 0.5);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+      overflow: hidden;
+      transform: scale(0.95);
+      transition: transform 0.2s ease;
+    }
+    .modal.active .modal-content {
+      transform: scale(1);
+    }
+    .modal-header {
+      padding: 1.5rem 2rem;
+      background: #141210;
+      border-bottom: 1px solid #c7a55b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #c7a55b;
+      margin: 0;
+    }
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ece8e0;
+      transition: 0.2s;
+    }
+    .close-modal:hover {
+      color: #c7a55b;
+    }
+    .modal-body {
+      padding: 2rem;
+    }
+    .booking-form-modal {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .booking-form-modal input,
+    .booking-form-modal select {
+      padding: 14px;
+      background: #1e1b18;
+      border: 1px solid #3a322b;
+      color: #ece8e0;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+    }
+    .booking-form-modal button {
+      background: #c7a55b;
+      border: none;
+      padding: 14px;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    .booking-form-modal button:hover {
+      background: #b48b3a;
+      transform: translateY(-2px);
+    }
+    .form-feedback {
+      font-size: 0.8rem;
+      color: #c7a55b;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
     @keyframes fadeUp {
       0% { opacity: 0; transform: translateY(30px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
-    /* responsiveness */
     @media (max-width: 980px) {
       .navbar {
         flex-direction: column;
@@ -562,14 +655,14 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
           <li><a href="#amenities">Amenities</a></li>
           <li><a href="#dining">Dining</a></li>
           <li><a href="#contact">Contact</a></li>
-      
+        </ul>
       </div>
     </div>
   </header>
-<!-- sirf ek hi rakho -->
-<button id="topBtn" title="Go to top">
-  <i class="fas fa-arrow-up"></i>
-</button>
+
+  <button id="topBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <main>
     <!-- Hero Section -->
@@ -580,7 +673,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
         <p>Where timeless grandeur meets modern elegance. Experience unrivaled luxury in the heart of the city.</p>
         <div class="btn-group">
           <a href="#suites" class="btn btn-primary">Discover Rooms</a>
-          <a href="#booking" class="btn btn-outline">Book Your Stay</a>
+          <!-- NEW: Book Now button that opens modal -->
+          <button id="openBookingModalBtn" class="btn btn-outline" style="cursor: pointer;">Book Your Stay</button>
         </div>
       </div>
     </section>
@@ -597,7 +691,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
             <a href="#suites" style="color: #c7a55b; font-weight: 500;">Explore our story →</a>
           </div>
           <div class="about-img">
-            <img src="images/myphoto.jpg" alt="My Photo">          </div>
+            <img src="images/myphoto.jpg" alt="My Photo">          
+          </div>
         </div>
       </div>
     </section>
@@ -634,6 +729,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
           </div>
         </div>
       </div>
+    </section>
+
     <!-- Dining Experience -->
     <section id="dining" class="dining">
       <div class="dining-content container">
@@ -644,7 +741,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
       </div>
     </section>
     
-    <!-- Booking / Contact Section (named as contact + quick booking) -->
+    <!-- Booking / Contact Section (original contact section remains untouched) -->
     <section id="contact" style="padding: 80px 0; background: #0f0e0c;">
       <div class="container">
         <div class="section-subhead" style="text-align: center;">YOUR STAY AWAITS</div>
@@ -672,12 +769,11 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
             <p><i class="fas fa-envelope" style="margin-right: 10px; color:#c7a55b;"></i> ImperialEmpire@gmail.com</p>
             <div class="social-links" style="margin-top: 2rem;">
               <a href="https://www.instagram.com/hotelimperialempire/" target="_blank">
-  <i class="fab fa-instagram"></i>
-</a>
-                          <a href="https://wa.me/919457549192" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
-      
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://wa.me/919457549192" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+              </a>
               <a href="#"><i class="fab fa-tripadvisor"></i></a>
             </div>
           </div>
@@ -685,13 +781,39 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
       </div>
     </section>
   </main>
+
   <!-- Floating Call Button -->
-<a href="tel:+919457549192" class="call-btn">
-  <i class="fas fa-phone-alt"></i>
-</a>
+  <a href="tel:+919457549192" class="call-btn">
+    <i class="fas fa-phone-alt"></i>
+  </a>
+
+  <!-- MODAL (BOOK NOW POPUP) with integrated form -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Secure Your Stay</h3>
+        <button class="close-modal" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="modalBookingForm" class="booking-form-modal">
+          <input type="text" id="modalName" placeholder="Full Name" required>
+          <input type="email" id="modalEmail" placeholder="Email Address" required>
+          <input type="date" id="modalCheckin" required>
+          <input type="date" id="modalCheckout" required>
+          <select id="modalSuite">
+            <option value="Premium Room">Premium Room (2000 rs/night)</option>
+            <option value="Medium Room">Medium Room (1500 rs/night)</option>
+            <option value="Simple Room">Simple Room (750 rs/night)</option>
+          </select>
+          <button type="submit" id="submitModalBooking">Book Now via WhatsApp</button>
+          <div id="modalFeedback" class="form-feedback"></div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    <div class="container"
+    <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
           <h3>IMPERIAL <span style="color:#c7a55b;">EMPIRE</span></h3>
@@ -706,9 +828,6 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
             <li><a href="#dining" style="color:#aca59a; text-decoration:none;">Gastronomy</a></li>
           </ul>
         </div>
-
-          
-        </div>
       </div>
       <div class="copyright">
         <p>© 2020 Hotel Imperial Empire — Where legends rest. All rights reserved.</p>
@@ -717,62 +836,106 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   </footer>
 
   <script>
- const form = document.getElementById('bookingForm');
+    // --- Original booking form (contact section) remains fully functional, unchanged ---
+    const originalForm = document.getElementById('bookingForm');
+    originalForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      const suite = document.getElementById('suiteSelect').value;
+      if (!name || !email || !checkin || !checkout) {
+        alert("Please fill all details");
+        return;
+      }
+      if (new Date(checkin) >= new Date(checkout)) {
+        alert("Check-out date must be after check-in date");
+        return;
+      }
+      const message = `*Hotel Imperial Empire Booking Inquiry*%0A%0A👤 Name: ${name}%0A📧 Email: ${email}%0A🏨 Room Type: ${suite}%0A📅 Check-in: ${checkin}%0A📅 Check-out: ${checkout}%0A%0APlease confirm availability.`;
+      const phoneNumber = "919457549192";
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+      originalForm.reset();
+    });
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
+    // --- MODAL LOGIC: Book Now button opens modal with identical booking logic ---
+    const modal = document.getElementById('bookingModal');
+    const openModalBtn = document.getElementById('openBookingModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalForm = document.getElementById('modalBookingForm');
+    const modalFeedback = document.getElementById('modalFeedback');
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
-  const suite = document.getElementById('suiteSelect').value;
+    // Open modal when clicking "Book Your Stay" button (hero section)
+    openModalBtn.addEventListener('click', () => {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+      modalFeedback.innerText = '';
+      // reset modal form fields (optional)
+      modalForm.reset();
+    });
 
-  // Validation
-  if (!name || !email || !checkin || !checkout) {
-    alert("Please fill all details");
-    return;
-  }
+    // Close modal functions
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    closeModalBtn.addEventListener('click', closeModal);
+    // Click outside modal content to close
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    // Escape key closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
 
-  if (new Date(checkin) >= new Date(checkout)) {
-    alert("Check-out date must be after check-in date");
-    return;
-  }
+    // Modal form submit handler (exactly same logic as original but with modal fields)
+    modalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('modalName').value.trim();
+      const email = document.getElementById('modalEmail').value.trim();
+      const checkin = document.getElementById('modalCheckin').value;
+      const checkout = document.getElementById('modalCheckout').value;
+      const suite = document.getElementById('modalSuite').value;
 
-  // WhatsApp message format
-  const message = `*Hotel Imperial Empire Booking Inquiry*%0A%0A
-👤 Name: ${name}%0A
-📧 Email: ${email}%0A
-🏨 Room Type: ${suite}%0A
-📅 Check-in: ${checkin}%0A
-📅 Check-out: ${checkout}%0A%0A
-Please confirm availability.`;
+      if (!name || !email || !checkin || !checkout) {
+        modalFeedback.innerText = "❌ Please fill all fields.";
+        return;
+      }
+      if (new Date(checkin) >= new Date(checkout)) {
+        modalFeedback.innerText = "❌ Check-out must be after check-in.";
+        return;
+      }
 
-  // Your WhatsApp number (without +)
-  const phoneNumber = "919457549192";
+      // Build WhatsApp message
+      const message = `*Hotel Imperial Empire Booking Inquiry*%0A%0A👤 Name: ${name}%0A📧 Email: ${email}%0A🏨 Room Type: ${suite}%0A📅 Check-in: ${checkin}%0A📅 Check-out: ${checkout}%0A%0APlease confirm availability.`;
+      const phoneNumber = "919457549192";
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+      
+      // Show success feedback, reset form and close modal after short delay
+      modalFeedback.innerText = "✓ Request sent! Redirecting to WhatsApp...";
+      modalForm.reset();
+      setTimeout(() => {
+        closeModal();
+        modalFeedback.innerText = "";
+      }, 1500);
+    });
 
-  // Open WhatsApp
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-  window.open(whatsappURL, "_blank");
-
-  // Reset form
-  form.reset();
-});
-    
-
-    // Scroll to top button
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    topBtn.style.opacity = "1";
-    topBtn.style.visibility = "visible";
-  } else {
-    topBtn.style.opacity = "0";
-    topBtn.style.visibility = "hidden";
-  }
-});
-
+    // --- Scroll to top button logic (unchanged) ---
+    const topBtn = document.getElementById("topBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        topBtn.style.opacity = "1";
+        topBtn.style.visibility = "visible";
+      } else {
+        topBtn.style.opacity = "0";
+        topBtn.style.visibility = "hidden";
+      }
+    });
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
     // Active nav highlight on scroll
     const sections = document.querySelectorAll('section, #home');
@@ -794,13 +957,6 @@ window.addEventListener("scroll", () => {
         }
       });
     });
-    topBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
   </script>
- 
 </body>
 </html>
